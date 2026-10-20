@@ -1,0 +1,18 @@
+{
+  "name": "game-learn-hub",
+  "version": "1.0.0",
+  "description": "A website for young gamers (10-25) to learn game design and find cheat codes.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}
