@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameLearn Hub - Design Games & Get Cheats</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🎮 GameLearn Hub</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="tutorials.html">Design Tutorials</a></li>
+                <li><a href="cheats.html">Cheat Codes</a></li>
+                <li><a href="quiz.html">Quiz 🧠</a></li>
+                <li><a href="mini-game.html">Mini Game 🕹️</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Dark/Light Mode">🌙</button>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Games Seekho,<br>Cheats Pao! 🎮</h1>
+            <p>10-25 saal ke young gamers ke liye perfect jagah.<br>
+            Game design seekhna hai ya cheat codes chahiye — sab yahan milega!</p>
+            <div class="hero-buttons">
+                <a href="tutorials.html" class="btn btn-primary">Start Learning 🚀</a>
+                <a href="cheats.html" class="btn btn-secondary">Get Cheats 🔥</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="cheatCount">0</span>
+                    <span class="stat-label">Cheat Codes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Tutorials</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Games</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="game-icon">🕹️</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Kya Kya Milega?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Game Design</h3>
+                <p>Beginner se advanced tak — games kaise design kiya jata hai, step by step seekho</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <h3>Cheat Codes</h3>
+                <p>GTA, Minecraft, FIFA, Free Fire, Roblox, PUBG — sab games ke cheat codes ek jagah</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Game Theory</h3>
+                <p>Game mechanics, level design, storytelling — sab kuch samjho</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Quiz & Games</h3>
+                <p>Apni knowledge test karo aur mini-games khel ke seekho</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Games Section -->
+    <section class="popular-games">
+        <h2>Popular Game Cheats</h2>
+        <div class="games-grid">
+            <a href="gta-cheats.html" class="game-card">
+                <div class="game-card-icon">🚗</div>
+                <h3>GTA V</h3>
+                <p>Action / Open World</p>
+                <span class="cheat-count">15+ Cheats</span>
+            </a>
+            <a href="minecraft-cheats.html" class="game-card">
+                <div class="game-card-icon">⛏️</div>
+                <h3>Minecraft</h3>
+                <p>Sandbox / Survival</p>
+                <span class="cheat-count">20+ Cheats</span>
+            </a>
+            <a href="fifa-cheats.html" class="game-card">
+                <div class="game-card-icon">⚽</div>
+                <h3>FIFA 24</h3>
+                <p>Sports / Football</p>
+                <span class="cheat-count">10+ Cheats</span>
+            </a>
+            <a href="freefire-cheats.html" class="game-card">
+                <div class="game-card-icon">🔫</div>
+                <h3>Free Fire</h3>
+                <p>Battle Royale</p>
+                <span class="cheat-count">12+ Cheats</span>
+            </a>
+            <a href="roblox-cheats.html" class="game-card">
+                <div class="game-card-icon">🧱</div>
+                <h3>Roblox</h3>
+                <p>Sandbox / Creative</p>
+                <span class="cheat-count">10+ Cheats</span>
+            </a>
+            <a href="pubg-cheats.html" class="game-card">
+                <div class="game-card-icon">🎯</div>
+                <h3>PUBG</h3>
+                <p>Battle Royale</p>
+                <span class="cheat-count">16+ Cheats</span>
+            </a>
+        </div>
+        <div class="view-all">
+            <a href="cheats.html" class="btn btn-secondary">View All Games →</a>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="progress-section">
+        <h2>📊 Your Learning Progress</h2>
+        <div class="progress-container">
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span>Game Design Basics</span>
+                    <span class="progress-percent" id="progress1">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar1" style="width: 0%"></div>
+                </div>
+                <button class="btn-complete" data-progress="1" data-percent="25">Mark Complete ✓</button>
+            </div>
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span>Game Engines</span>
+                    <span class="progress-percent" id="progress2">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar2" style="width: 0%"></div>
+                </div>
+                <button class="btn-complete" data-progress="2" data-percent="25">Mark Complete ✓</button>
+            </div>
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span>Level Design</span>
+                    <span class="progress-percent" id="progress3">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar3" style="width: 0%"></div>
+                </div>
+                <button class="btn-complete" data-progress="3" data-percent="25">Mark Complete ✓</button>
+            </div>
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span>Game Balancing</span>
+                    <span class="progress-percent" id="progress4">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar4" style="width: 0%"></div>
+                </div>
+                <button class="btn-complete" data-progress="4" data-percent="25">Mark Complete ✓</button>
+            </div>
+        </div>
+        <div class="total-progress">
+            <h3>Total Progress: <span id="totalProgress">0%</span></h3>
+            <div class="progress-bar total">
+                <div class="progress-fill" id="totalProgressBar" style="width: 0%"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>📬 Newsletter Subscribe Karo</h2>
+        <p>Naye tutorials aur cheat codes seedha inbox me pao!</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Apna email daalo..." required class="newsletter-input">
+            <button type="submit" class="btn btn-primary">Subscribe 🔔</button>
+        </form>
+        <p class="newsletter-msg" id="newsletterMsg"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="cheats.html">Cheats</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="mini-game.html">Mini Game</a>
+            </div>
+            <p>🎮 GameLearn Hub — Made with ❤️ for young gamers</p>
+            <p>&copy; 2024 GameLearn Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
