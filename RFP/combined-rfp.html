@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined RFP - Dashboard & Game Designing Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: white;
+            color: #667eea;
+        }
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            color: #764ba2;
+            margin: 20px 0 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: #f8f9ff;
+        }
+        .priority-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .priority-medium {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .priority-low {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .test-case {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .test-case h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .test-case p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .badge-high {
+            background: #ffeaa7;
+            color: #d63031;
+        }
+        .badge-medium {
+            background: #ffeaa7;
+            color: #e17055;
+        }
+        .badge-low {
+            background: #55efc4;
+            color: #00b894;
+        }
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        .card p {
+            opacity: 0.9;
+        }
+        .open-questions {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .open-questions h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .open-questions ul {
+            margin-left: 20px;
+            color: #856404;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Combined RFP Document</h1>
+            <p>Dashboard & Game Designing Website - Requirements, Test Cases & Acceptance Criteria</p>
+            <p><strong>Generated:</strong> 2026-10-20 | <strong>Version:</strong> 1.0</p>
+        </header>
+
+        <div class="summary-cards">
+            <div class="card">
+                <h3>2</h3>
+                <p>RFP Documents</p>
+            </div>
+            <div class="card">
+                <h3>29</h3>
+                <p>Functional Requirements</p>
+            </div>
+            <div class="card">
+                <h3>35</h3>
+                <p>Test Cases</p>
+            </div>
+            <div class="card">
+                <h3>20</h3>
+                <p>Acceptance Criteria</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('dashboard')">Dashboard RFP</button>
+            <button class="tab-btn" onclick="showTab('gamedesign')">Game Designing RFP</button>
+            <button class="tab-btn" onclick="showTab('all')">View All</button>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard RFP -->
+            <div id="dashboard" class="tab-content active">
+                <div class="section">
+                    <h2>Dashboard RFP</h2>
+                    <p><strong>Overview:</strong> A centralized dashboard that provides users with an overview of key metrics, recent activities, and quick access to important features.</p>
+                </div>
+
+                <div class="section">
+                    <h3>User Requirements</h3>
+                    <table>
+                        <tr><th>#</th><th>Requirement</th><th>Priority</th></tr>
+                        <tr><td>UR1</td><td>Login ke baad dashboard pe automatic redirect</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR2</td><td>Key metrics widgets display (stats, charts, recent activity)</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR3</td><td>User role ke hisaab se content filter (Admin vs Regular)</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR4</td><td>Quick action buttons for common tasks</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR5</td><td>Responsive design - mobile aur desktop dono pe kaam kare</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR6</td><td>Dark/Light mode toggle</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR7</td><td>Manual refresh + auto-refresh option</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR8</td><td>Date range filter (Today, Week, Month, Year, Custom)</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR9</td><td>Recent activity feed</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR10</td><td>Export data (PDF/Excel)</td><td class="priority-low">Low</td></tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>Functional Requirements</h3>
+                    <table>
+                        <tr><th>ID</th><th>Requirement</th><th>Acceptance Criteria</th></tr>
+                        <tr><td>FR1</td><td>Dashboard page login ke baad automatically load ho</td><td>URL redirect to /dashboard</td></tr>
+                        <tr><td>FR2</td><td>Key metrics widgets display kare</td><td>Widgets API se data fetch karke render ho</td></tr>
+                        <tr><td>FR3</td><td>Charts/Graphs show kare trends</td><td>Charts interactive ho, tooltips show kare</td></tr>
+                        <tr><td>FR4</td><td>Recent activity feed display kare</td><td>Chronological order mein display</td></tr>
+                        <tr><td>FR5</td><td>Quick action buttons se navigate karo</td><td>"New Order", "Add User", "View Reports"</td></tr>
+                        <tr><td>FR6</td><td>User role ke hisaab se widgets filter ho</td><td>Admin: all widgets, Regular: limited</td></tr>
+                        <tr><td>FR7</td><td>Date range filter ho</td><td>Data filter ho based on selection</td></tr>
+                        <tr><td>FR8</td><td>Manual refresh button se data reload ho</td><td>Loading indicator + fresh data</td></tr>
+                        <tr><td>FR9</td><td>Auto-refresh har 5 minutes mein</td><td>Background mein data update</td></tr>
+                        <tr><td>FR10</td><td>Dark/Light mode toggle</td><td>Theme persist in localStorage</td></tr>
+                        <tr><td>FR11</td><td>Responsive layout</td><td>Breakpoints: 768px, 1024px</td></tr>
+                        <tr><td>FR12</td><td>Loading state show ho</td><td>Skeleton/spinner</td></tr>
+                        <tr><td>FR13</td><td>Error state show ho</td><td>Error message + retry button</td></tr>
+                        <tr><td>FR14</td><td>Empty state show ho</td><td>Illustration + helpful message</td></tr>
+                        <tr><td>FR15</td><td>Export data PDF/Excel mein</td><td>Download button se file generate</td></tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>Test Cases (Dashboard)</h3>
+                    <div class="test-case">
+                        <h4>TC01: Dashboard Page Load After Login</h4>
+                        <p><strong>Description:</strong> Verify dashboard page successfully load hota hai login ke baad</p>
+                        <p><strong>Preconditions:</strong> User has valid credentials</p>
+                        <p><strong>Steps:</strong> 1. Navigate to login page 2. Enter valid email and password 3. Click "Login" button 4. Wait for dashboard to load</p>
+                        <p><strong>Expected Result:</strong> User redirect to /dashboard with all widgets visible</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC02: Key Metrics Widgets Display</h4>
+                        <p><strong>Description:</strong> Verify saare key metrics widgets correctly display hote hain</p>
+                        <p><strong>Expected Result:</strong> All widgets show correct values with proper formatting</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC03: Charts/Graphs Render Correctly</h4>
+                        <p><strong>Description:</strong> Verify charts aur graphs properly render hote hain</p>
+                        <p><strong>Expected Result:</strong> All charts render correctly with interactive tooltips</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC04: Date Range Filter - Today</h4>
+                        <p><strong>Description:</strong> Verify "Today" date range filter correctly kaam karta hai</p>
+                        <p><strong>Expected Result:</strong> Only today's data displayed in all widgets</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC05: Date Range Filter - Custom Range</h4>
+                        <p><strong>Description:</strong> Verify custom date range filter correctly kaam karta hai</p>
+                        <p><strong>Expected Result:</strong> Data displayed for selected date range only</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC06: Manual Refresh Button</h4>
+                        <p><strong>Description:</strong> Verify refresh button se data reload hota hai</p>
+                        <p><strong>Expected Result:</strong> Loading indicator shows, then fresh data loads</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC07: Role-Based Content - Admin User</h4>
+                        <p><strong>Description:</strong> Verify admin user ko saare widgets dikhte hain</p>
+                        <p><strong>Expected Result:</strong> Admin sees all widgets including sensitive data</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC08: Role-Based Content - Regular User</h4>
+                        <p><strong>Description:</strong> Verify regular user ko sirf authorized widgets dikhte hain</p>
+                        <p><strong>Expected Result:</strong> Regular user sees only authorized widgets</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC09: Quick Action Buttons Navigation</h4>
+                        <p><strong>Description:</strong> Verify quick action buttons correctly navigate karte hain</p>
+                        <p><strong>Expected Result:</strong> Each button navigates to correct page</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC10: Dark/Light Mode Toggle</h4>
+                        <p><strong>Description:</strong> Verify theme toggle correctly kaam karta hai</p>
+                        <p><strong>Expected Result:</strong> Theme toggles correctly and persists across sessions</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC11: Responsive Layout - Mobile View</h4>
+                        <p><strong>Description:</strong> Verify dashboard mobile pe properly display hota hai</p>
+                        <p><strong>Expected Result:</strong> Layout properly adjusts, all elements accessible</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC12: Responsive Layout - Tablet View</h4>
+                        <p><strong>Description:</strong> Verify dashboard tablet pe properly display hota hai</p>
+                        <p><strong>Expected Result:</strong> Layout properly adjusts for tablet</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC13: Loading State Display</h4>
+                        <p><strong>Description:</strong> Verify loading state correctly show hota hai</p>
+                        <p><strong>Expected Result:</strong> Skeleton loaders or spinners visible during data fetch</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC14: Error State - API Failure</h4>
+                        <p><strong>Description:</strong> Verify error state correctly show hota hai jab API fail ho</p>
+                        <p><strong>Expected Result:</strong> User-friendly error message with retry option</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC15: Empty State - No Data</h4>
+                        <p><strong>Description:</strong> Verify empty state correctly show hota hai jab koi data na ho</p>
+                        <p><strong>Expected Result:</strong> Helpful empty state message with illustration</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC16: Recent Activity Feed</h4>
+                        <p><strong>Description:</strong> Verify recent activity feed correctly display hota hai</p>
+                        <p><strong>Expected Result:</strong> Activities display correctly, click navigates to relevant page</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC17: Export Data - PDF</h4>
+                        <p><strong>Description:</strong> Verify PDF export functionality kaam karti hai</p>
+                        <p><strong>Expected Result:</strong> PDF file downloads with correct data and formatting</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-low">Low</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC18: Export Data - Excel</h4>
+                        <p><strong>Description:</strong> Verify Excel export functionality kaam karti hai</p>
+                        <p><strong>Expected Result:</strong> Excel file downloads with correct data in tabular format</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-low">Low</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC19: Auto-Refresh Functionality</h4>
+                        <p><strong>Description:</strong> Verify auto-refresh har 5 minutes mein kaam karta hai</p>
+                        <p><strong>Expected Result:</strong> Data refreshes automatically without user interaction</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC20: Session Timeout Handling</h4>
+                        <p><strong>Description:</strong> Verify dashboard handles session timeout gracefully</p>
+                        <p><strong>Expected Result:</strong> User redirected to login page with appropriate message</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                </div>
+
+                <div class="open-questions">
+                    <h4>Open Questions</h4>
+                    <ul>
+                        <li>Q1: Kya real-time updates (WebSocket/SSE) required hain ya manual refresh sufficient hai?</li>
+                        <li>Q2: Kya widgets customizable hain (add/remove/rearrange) ya fixed layout hai?</li>
+                        <li>Q3: Kya multiple dashboard layouts honge (e.g., Sales Dashboard, Analytics Dashboard)?</li>
+                        <li>Q4: Kya dashboard pe notification/alert system integrate karna hai?</li>
+                        <li>Q5: Kya data caching strategy kya hai (Redis, CDN)?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Game Designing RFP -->
+            <div id="gamedesign" class="tab-content">
+                <div class="section">
+                    <h2>Game Designing Website RFP</h2>
+                    <p><strong>Overview:</strong> A comprehensive game designing website that allows users to learn game design, create games, and share their creations.</p>
+                </div>
+
+                <div class="section">
+                    <h3>User Requirements</h3>
+                    <table>
+                        <tr><th>#</th><th>Requirement</th><th>Priority</th></tr>
+                        <tr><td>UR1</td><td>User registration and login system</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR2</td><td>Game design tutorials and courses</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR3</td><td>Interactive game builder tool</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR4</td><td>Community forum for discussions</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR5</td><td>User profile and portfolio showcase</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR6</td><td>Game asset library (sprites, sounds, templates)</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR7</td><td>Real-time collaboration on game projects</td><td class="priority-medium">Medium</td></tr>
+                        <tr><td>UR8</td><td>Export games to multiple platforms</td><td class="priority-high">High</td></tr>
+                        <tr><td>UR9</td><td>Leaderboard and achievements system</td><td class="priority-low">Low</td></tr>
+                        <tr><td>UR10</td><td>Responsive design - mobile aur desktop</td><td class="priority-high">High</td></tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>Functional Requirements</h3>
+                    <table>
+                        <tr><th>ID</th><th>Requirement</th><th>Acceptance Criteria</th></tr>
+                        <tr><td>FR1</td><td>User registration with email verification</td><td>Email verification link bhejna</td></tr>
+                        <tr><td>FR2</td><td>User login with email/password and social login</td><td>JWT token generate hona</td></tr>
+                        <tr><td>FR3</td><td>Game design tutorials with video and text</td><td>Video player + text content</td></tr>
+                        <tr><td>FR4</td><td>Interactive game builder with drag-and-drop</td><td>Canvas pe drag-drop working</td></tr>
+                        <tr><td>FR5</td><td>Game asset library with search and filter</td><td>Search/filter functional</td></tr>
+                        <tr><td>FR6</td><td>Community forum with threads and replies</td><td>CRUD operations working</td></tr>
+                        <tr><td>FR7</td><td>User profile with portfolio showcase</td><td>Profile page with projects</td></tr>
+                        <tr><td>FR8</td><td>Real-time collaboration (WebSocket)</td><td>Multiple users edit simultaneously</td></tr>
+                        <tr><td>FR9</td><td>Export game as HTML5, Android, iOS</td><td>Downloadable files generate</td></tr>
+                        <tr><td>FR10</td><td>Leaderboard with user rankings</td><td>Rankings update in real-time</td></tr>
+                        <tr><td>FR11</td><td>Achievement system with badges</td><td>Badges unlock on milestones</td></tr>
+                        <tr><td>FR12</td><td>Responsive layout - mobile, tablet, desktop</td><td>Breakpoints: 768px, 1024px</td></tr>
+                        <tr><td>FR13</td><td>Loading states for all async operations</td><td>Skeleton/spinner visible</td></tr>
+                        <tr><td>FR14</td><td>Error handling with user-friendly messages</td><td>Error messages + retry option</td></tr>
+                        <tr><td>FR15</td><td>Search functionality across all content</td><td>Search results relevant</td></tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3>Test Cases (Game Designing)</h3>
+                    <div class="test-case">
+                        <h4>TC01: User Registration</h4>
+                        <p><strong>Description:</strong> Verify naya user successfully register ho</p>
+                        <p><strong>Steps:</strong> 1. Navigate to registration page 2. Enter valid name, email, password 3. Click "Sign Up" 4. Check email for verification link 5. Click verification link</p>
+                        <p><strong>Expected Result:</strong> Account create ho, verification email jaye, account verify ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC02: User Login</h4>
+                        <p><strong>Description:</strong> Verify registered user successfully login ho</p>
+                        <p><strong>Expected Result:</strong> Dashboard pe redirect ho, JWT token generate ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC03: Social Login - Google</h4>
+                        <p><strong>Description:</strong> Verify user Google se login kar sakta hai</p>
+                        <p><strong>Expected Result:</strong> Google se login ho, dashboard pe redirect ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC04: Game Builder - Drag and Drop</h4>
+                        <p><strong>Description:</strong> Verify game builder mein drag-and-drop working hai</p>
+                        <p><strong>Expected Result:</strong> Asset canvas pe drag-drop ho, position save ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC05: Game Builder - Save Project</h4>
+                        <p><strong>Description:</strong> Verify game project save hota hai</p>
+                        <p><strong>Expected Result:</strong> Project save ho, refresh ke baad bhi data persist ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC06: Tutorial Video Playback</h4>
+                        <p><strong>Description:</strong> Verify tutorial videos play hote hain</p>
+                        <p><strong>Expected Result:</strong> Video smoothly play ho, controls working ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC07: Asset Library Search</h4>
+                        <p><strong>Description:</strong> Verify asset library mein search working hai</p>
+                        <p><strong>Expected Result:</strong> Relevant results show ho, asset select ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC08: Asset Library Filter by Category</h4>
+                        <p><strong>Description:</strong> Verify assets category wise filter hote hain</p>
+                        <p><strong>Expected Result:</strong> Sirf selected category ke assets show ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC09: Forum - Create Thread</h4>
+                        <p><strong>Description:</strong> Verify user forum mein thread create kar sakta hai</p>
+                        <p><strong>Expected Result:</strong> Thread create ho, forum mein dikhe</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC10: Forum - Reply to Thread</h4>
+                        <p><strong>Description:</strong> Verify user thread mein reply kar sakta hai</p>
+                        <p><strong>Expected Result:</strong> Reply post ho, thread mein dikhe</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC11: Profile Page Display</h4>
+                        <p><strong>Description:</strong> Verify user profile page sahi display hota hai</p>
+                        <p><strong>Expected Result:</strong> Profile sahi data ke saath display ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC12: Real-Time Collaboration</h4>
+                        <p><strong>Description:</strong> Verify multiple users simultaneously edit kar sakte hain</p>
+                        <p><strong>Expected Result:</strong> Dono users pe real-time changes dikhe</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC13: Export Game - HTML5</h4>
+                        <p><strong>Description:</strong> Verify game export HTML5 format mein hota hai</p>
+                        <p><strong>Expected Result:</strong> HTML5 file download ho, game playable ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC14: Export Game - Android APK</h4>
+                        <p><strong>Description:</strong> Verify game export Android APK format mein hota hai</p>
+                        <p><strong>Expected Result:</strong> APK file download ho, Android pe install ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC15: Leaderboard Display</h4>
+                        <p><strong>Description:</strong> Verify leaderboard sahi rankings display karta hai</p>
+                        <p><strong>Expected Result:</strong> Leaderboard sahi rankings ke saath display ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-low">Low</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC16: Achievement Unlock</h4>
+                        <p><strong>Description:</strong> Verify achievements unlock hote hain milestones pe</p>
+                        <p><strong>Expected Result:</strong> Achievement unlock ho, badge profile pe dikhe</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-low">Low</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC17: Responsive Layout - Mobile</h4>
+                        <p><strong>Description:</strong> Verify site mobile pe properly display hota hai</p>
+                        <p><strong>Expected Result:</strong> Layout properly adjust ho, sab elements accessible ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC18: Loading States</h4>
+                        <p><strong>Description:</strong> Verify loading states correctly show hote hain</p>
+                        <p><strong>Expected Result:</strong> Skeleton/spinner show ho data load hone ke dauran</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC19: Error Handling - API Failure</h4>
+                        <p><strong>Description:</strong> Verify error states correctly show hote hain</p>
+                        <p><strong>Expected Result:</strong> User-friendly error message + retry option</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-high">High</span></p>
+                    </div>
+                    <div class="test-case">
+                        <h4>TC20: Search Functionality</h4>
+                        <p><strong>Description:</strong> Verify global search working hai</p>
+                        <p><strong>Expected Result:</strong> Relevant results show ho, click pe correct page pe navigate ho</p>
+                        <p><strong>Priority:</strong> <span class="badge badge-medium">Medium</span></p>
+                    </div>
+                </div>
+
+                <div class="open-questions">
+                    <h4>Open Questions</h4>
+                    <ul>
+                        <li>Q1: Kya game builder mein 3D support chahiye ya 2D sufficient hai?</li>
+                        <li>Q2: Kya payment/subscription model hai for premium features?</li>
+                        <li>Q3: Kya game export ke liye additional SDKs install karni hongi?</li>
+                        <li>Q4: Kya community mein moderation tools chahiye?</li>
+                        <li>Q5: Kya game analytics dashboard chahiye for creators?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- All in one view -->
+            <div id="all" class="tab-content">
+                <div class="section">
+                    <h2>All Requirements Summary</h2>
+                    <table>
+                        <tr><th>RFP</th><th>User Req</th><th>Functional Req</th><th>Test Cases</th><th>Acceptance Criteria</th></tr>
+                        <tr><td>Dashboard</td><td>10</td><td>15</td><td>20</td><td>10</td></tr>
+                        <tr><td>Game Designing</td><td>10</td><td>15</td><td>20</td><td>10</td></tr>
+                        <tr><td><strong>Total</strong></td><td><strong>20</strong></td><td><strong>30</strong></td><td><strong>40</strong></td><td><strong>20</strong></td></tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h2>All Test Cases Overview</h2>
+                    <table>
+                        <tr><th>TC#</th><th>Dashboard RFP</th><th>Game Designing RFP</th></tr>
+                        <tr><td>TC01</td><td>Dashboard Page Load After Login</td><td>User Registration</td></tr>
+                        <tr><td>TC02</td><td>Key Metrics Widgets Display</td><td>User Login</td></tr>
+                        <tr><td>TC03</td><td>Charts/Graphs Render Correctly</td><td>Social Login - Google</td></tr>
+                        <tr><td>TC04</td><td>Date Range Filter - Today</td><td>Game Builder - Drag and Drop</td></tr>
+                        <tr><td>TC05</td><td>Date Range Filter - Custom Range</td><td>Game Builder - Save Project</td></tr>
+                        <tr><td>TC06</td><td>Manual Refresh Button</td><td>Tutorial Video Playback</td></tr>
+                        <tr><td>TC07</td><td>Role-Based Content - Admin User</td><td>Asset Library Search</td></tr>
+                        <tr><td>TC08</td><td>Role-Based Content - Regular User</td><td>Asset Library Filter by Category</td></tr>
+                        <tr><td>TC09</td><td>Quick Action Buttons Navigation</td><td>Forum - Create Thread</td></tr>
+                        <tr><td>TC10</td><td>Dark/Light Mode Toggle</td><td>Forum - Reply to Thread</td></tr>
+                        <tr><td>TC11</td><td>Responsive Layout - Mobile View</td><td>Profile Page Display</td></tr>
+                        <tr><td>TC12</td><td>Responsive Layout - Tablet View</td><td>Real-Time Collaboration</td></tr>
+                        <tr><td>TC13</td><td>Loading State Display</td><td>Export Game - HTML5</td></tr>
+                        <tr><td>TC14</td><td>Error State - API Failure</td><td>Export Game - Android APK</td></tr>
+                        <tr><td>TC15</td><td>Empty State - No Data</td><td>Leaderboard Display</td></tr>
+                        <tr><td>TC16</td><td>Recent Activity Feed</td><td>Achievement Unlock</td></tr>
+                        <tr><td>TC17</td><td>Export Data - PDF</td><td>Responsive Layout - Mobile</td></tr>
+                        <tr><td>TC18</td><td>Export Data - Excel</td><td>Loading States</td></tr>
+                        <tr><td>TC19</td><td>Auto-Refresh Functionality</td><td>Error Handling - API Failure</td></tr>
+                        <tr><td>TC20</td><td>Session Timeout Handling</td><td>Search Functionality</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Combined RFP Document | Generated: 2026-10-20 | Version 1.0</p>
+            <p>Dashboard & Game Designing Website Requirements</p>
+        </footer>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            if (tabName === 'all') {
+                document.getElementById('all').classList.add('active');
+            } else {
+                document.getElementById(tabName).classList.add('active');
+            }
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
